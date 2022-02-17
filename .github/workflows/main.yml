@@ -1,0 +1,29 @@
+# This is a basic workflow to help you get started with Actions
+
+name: CI
+
+on: [push] #触发条件push操作！
+
+jobs:
+  check:
+    name: Test on ${{ matrix.os }}
+    #运行在哪个平台这里是MacOS平台
+    runs-on: macos-latest
+    
+    steps:
+      - uses: actions/checkout@v1
+      #三方flutter的Action，它可以在服务器配置一个Flutter环境
+      - uses: subosito/flutter-action@v1
+        with:
+          flutter-version: '2.10.1'
+          channel: 'stable'
+      #想让我们CI做的事情！
+      - run: cd module && flutter build ios-framework --cocoapods --output=../iOS/Flutter 
+      - run: |
+         git add .
+         git commit -m 'update flutter framework'
+     
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
