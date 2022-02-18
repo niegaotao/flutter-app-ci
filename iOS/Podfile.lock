@@ -1,3 +1,16 @@
-PODFILE CHECKSUM: e3ec98137ad180c4db319f493c5e7c0d361020af
+PODS:
+  - Flutter (2.10.100)
+
+DEPENDENCIES:
+  - Flutter (from `flutter/Profile/Flutter.podspec`)
+
+EXTERNAL SOURCES:
+  Flutter:
+    :podspec: flutter/Profile/Flutter.podspec
+
+SPEC CHECKSUMS:
+  Flutter: dea3b8a1985e7d6d33880c608c1f542ce1a2c9be
+
+PODFILE CHECKSUM: 74218a845ffb022feebe67d54d8c2aabc56fe27b
 
 COCOAPODS: 1.11.2

@@ -6,5 +6,7 @@ target 'iOS' do
   use_frameworks!
 
   # Pods for iOS
-
+  
+  pod 'Flutter', :podspec => 'flutter/Profile/Flutter.podspec'
+  
 end
