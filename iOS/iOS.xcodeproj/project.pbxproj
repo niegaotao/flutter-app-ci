@@ -13,18 +13,18 @@
 		C96CFB4927BF24B60073417F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C96CFB4727BF24B60073417F /* Main.storyboard */; };
 		C96CFB4B27BF24BA0073417F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C96CFB4A27BF24BA0073417F /* Assets.xcassets */; };
 		C96CFB4E27BF24BA0073417F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C96CFB4C27BF24BA0073417F /* LaunchScreen.storyboard */; };
-		C96CFB5627BF2E780073417F /* App.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = C96CFB5527BF2E780073417F /* App.xcframework */; };
-		C96CFB5727BF2E780073417F /* App.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C96CFB5527BF2E780073417F /* App.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		C96CFB7E27BF48C30073417F /* App.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = C96CFB7D27BF48C30073417F /* App.xcframework */; };
+		C96CFB7F27BF48C30073417F /* App.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C96CFB7D27BF48C30073417F /* App.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		C96CFB5827BF2E780073417F /* Embed Frameworks */ = {
+		C96CFB5C27BF422C0073417F /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				C96CFB5727BF2E780073417F /* App.xcframework in Embed Frameworks */,
+				C96CFB7F27BF48C30073417F /* App.xcframework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -42,7 +42,7 @@
 		C96CFB4A27BF24BA0073417F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C96CFB4D27BF24BA0073417F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C96CFB4F27BF24BA0073417F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		C96CFB5527BF2E780073417F /* App.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = App.xcframework; path = flutter/Release/App.xcframework; sourceTree = "<group>"; };
+		C96CFB7D27BF48C30073417F /* App.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = App.xcframework; path = flutter/Debug/App.xcframework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,7 +51,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				241087399EF89E26F5134605 /* Pods_iOS.framework in Frameworks */,
-				C96CFB5627BF2E780073417F /* App.xcframework in Frameworks */,
+				C96CFB7E27BF48C30073417F /* App.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -70,7 +70,7 @@
 		AA8033CA6E2077F8F3B6AC69 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				C96CFB5527BF2E780073417F /* App.xcframework */,
+				C96CFB7D27BF48C30073417F /* App.xcframework */,
 				BB04708530E304DF6D6F7888 /* Pods_iOS.framework */,
 			);
 			name = Frameworks;
@@ -119,7 +119,7 @@
 				C96CFB3B27BF24B60073417F /* Frameworks */,
 				C96CFB3C27BF24B60073417F /* Resources */,
 				5C13748888161D8E11CB892F /* [CP] Embed Pods Frameworks */,
-				C96CFB5827BF2E780073417F /* Embed Frameworks */,
+				C96CFB5C27BF422C0073417F /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -375,6 +375,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 27NABV6MF4;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/flutter/Profile/App.xcframework/ios-arm64_x86_64-simulator",
+				);
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = iOS/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -404,6 +408,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 27NABV6MF4;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/flutter/Profile/App.xcframework/ios-arm64_x86_64-simulator",
+				);
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = iOS/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;

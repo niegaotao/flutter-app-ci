@@ -1,16 +1,26 @@
 PODS:
   - Flutter (2.10.100)
+  - NXKit (0.9.9):
+    - NXKit/Extensions (= 0.9.9)
+    - NXKit/Foundation (= 0.9.9)
+  - NXKit/Extensions (0.9.9):
+    - NXKit/Foundation
+  - NXKit/Foundation (0.9.9)
 
 DEPENDENCIES:
   - Flutter (from `flutter/Profile/Flutter.podspec`)
+  - NXKit (from `../../../dev/NXKit`)
 
 EXTERNAL SOURCES:
   Flutter:
     :podspec: flutter/Profile/Flutter.podspec
+  NXKit:
+    :path: "../../../dev/NXKit"
 
 SPEC CHECKSUMS:
   Flutter: dea3b8a1985e7d6d33880c608c1f542ce1a2c9be
+  NXKit: 24ae9ea257b48588ce87031084dc97003459838b
 
-PODFILE CHECKSUM: 74218a845ffb022feebe67d54d8c2aabc56fe27b
+PODFILE CHECKSUM: 707ed5b46712a684ee1c7a5d37580d13c214693b
 
 COCOAPODS: 1.11.2

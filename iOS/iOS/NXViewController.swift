@@ -5,33 +5,51 @@
 //  Created by 聂高涛 on 2022/2/18.
 //
 
+
 import UIKit
-import Flutter
+@_exported import Flutter
 
-class NXViewController: UIViewController {
-    let engine = FlutterEngine(name: "iOS")
-    var channel : FlutterMethodChannel? = nil
-    var vc : FlutterViewController? = nil
-
+class EXAppViewController: NXViewController {
+    let engine = FlutterEngine(name: "explorer")
+    
+    var flutter : FlutterViewController? = nil
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        print("run:\(engine.run())")
-        self.vc = FlutterViewController(engine: self.engine, nibName: nil, bundle: nil)
-
-        self.channel = FlutterMethodChannel(name: "App", binaryMessenger: self.vc!.binaryMessenger)
-        self.channel?.setMethodCallHandler({ call, result in
-            print("call.method：\(call.method)")
-        })
+    
+        self.engine.run()
         
-        self.channel?.invokeMethod("updateAppearance", arguments: ["backgroundColor":[0,0,0],"foregroundColor":[255,255,255]], result: nil)
+        self.flutter = FlutterViewController(engine: self.engine, nibName: nil, bundle: nil)
         
+        self.naviView.title = "EXAppViewController"
     }
     
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        self.channel?.invokeMethod("detail", arguments: nil, result: nil)
-        self.vc?.view.backgroundColor = UIColor.black
-        self.present(vc!, animated: true, completion: nil)
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        if let __flutter = self.flutter {
+            let mc = FlutterMethodChannel(name: "explorer", binaryMessenger: __flutter.binaryMessenger)
+            mc.setMethodCallHandler { method, result in
+                if(method.method == "exit"){
+                    NX.print(method.method)
+                    
+                    self.flutter?.dismiss(animated: true, completion: nil)
+                }
+            }
+            
+            self.present(__flutter, animated: true, completion: nil)
+            
+//            let channel = FlutterBasicMessageChannel(name: "explorer", binaryMessenger: __flutter.binaryMessenger)
+//            channel.setMessageHandler { value, reply in
+//                //收到来自flutter的消息
+//            }
+//            channel.sendMessage("----")//发送给flutter的消息
+            
+        }
+        
+        
     }
+
 }
+
+
 
