@@ -3,7 +3,7 @@ on: [push] #触发条件push操作！
 
 jobs:
   check:
-    name: Test on ${{ matrix.os }}
+    name: Archive ${{ matrix.os }}
     #运行在哪个平台这里是MacOS平台
     runs-on: macos-latest
     
