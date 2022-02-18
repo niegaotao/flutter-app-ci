@@ -22,7 +22,7 @@ class App extends StatelessWidget {
         // counter didn't reset back to zero; the application is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: const Desktop(title: 'Flutter Module'),
+      home: const Desktop(title: 'flutter-app'),
     );
   }
 }
@@ -66,22 +66,25 @@ class _DesktopState extends State<Desktop> {
 
   @override
   void initState() {
-    this.channel.setMethodCallHandler((call){
+    channel.setMethodCallHandler((call){
       print("Flutter收到消息:method=${call.method},arguments=${call.arguments}");
+      message = call.method;
 
       if(call.method == "updateAppearance"){
         if (call.arguments is Map) {
-          List<int> _bs = call.arguments["backgroundColor"];
-          List<int> _fs = call.arguments["foregroundColor"];
-          this.backgroundColor = Color.fromRGBO(_bs[0], _bs[1], _bs[2], 1);
-          this.foregroundColor = Color.fromRGBO(_fs[0], _fs[1], _fs[2], 1);
+          print("isMap");
+          List _bs = call.arguments['backgroundColor'];
+          List _fs = call.arguments['foregroundColor'];
+          backgroundColor = Color.fromRGBO(_bs[0], _bs[1], _bs[2], 1);
+          foregroundColor = Color.fromRGBO(_fs[0], _fs[1], _fs[2], 1);
+          print("_bs=${_bs};_fs=${_fs};_b=${backgroundColor};_f=${foregroundColor}");
         }
       }
 
-      this.message = call.method;
-      setState(() {});
+      setState(() {
+      });
 
-      this.channel.invokeMethod("${call.method}-reply");
+      channel.invokeMethod("${call.method}-reply");
 
       return Future((){});
     });
@@ -103,32 +106,35 @@ class _DesktopState extends State<Desktop> {
         title: Text(widget.title),
       ),
       body: Container(
-        color: this.backgroundColor,
-        child: Center(
-          // Center is a layout widget. It takes a single child and positions it
-          // in the middle of the parent.
-          child: Column(
-            // Column is also a layout widget. It takes a list of children and
-            // arranges them vertically. By default, it sizes itself to fit its
-            // children horizontally, and tries to be as tall as its parent.
-            //
-            // Invoke "debug painting" (press "p" in the console, choose the
-            // "Toggle Debug Paint" action from the Flutter Inspector in Android
-            // Studio, or the "Toggle Debug Paint" command in Visual Studio Code)
-            // to see the wireframe for each widget.
-            //
-            // Column has various properties to control how it sizes itself and
-            // how it positions its children. Here we use mainAxisAlignment to
-            // center the children vertically; the main axis here is the vertical
-            // axis because Columns are vertical (the cross axis would be
-            // horizontal).
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              Text(this.message, style: TextStyle(color: this.foregroundColor, fontSize: 30)),
-              Text('You have pushed the button this many times:', style: TextStyle(color: this.foregroundColor, fontSize: 17)),
-              Text('$_counter', style: TextStyle(color: this.foregroundColor, fontSize: 17),),
-            ],
-          ),
+
+        color: backgroundColor,
+        child: Column(
+          // Column is also a layout widget. It takes a list of children and
+          // arranges them vertically. By default, it sizes itself to fit its
+          // children horizontally, and tries to be as tall as its parent.
+          //
+          // Invoke "debug painting" (press "p" in the console, choose the
+          // "Toggle Debug Paint" action from the Flutter Inspector in Android
+          // Studio, or the "Toggle Debug Paint" command in Visual Studio Code)
+          // to see the wireframe for each widget.
+          //
+          // Column has various properties to control how it sizes itself and
+          // how it positions its children. Here we use mainAxisAlignment to
+          // center the children vertically; the main axis here is the vertical
+          // axis because Columns are vertical (the cross axis would be
+          // horizontal).
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: <Widget>[
+            Text(message, style: TextStyle(color: foregroundColor, fontSize: 30)),
+            Text('Presed times:$_counter', style: TextStyle(color: foregroundColor, fontSize: 17)),
+            GestureDetector(
+              onTapUp: (detail){
+                channel.invokeMethod("exit");
+              },
+              child: Text("退出", style: TextStyle(color: foregroundColor, fontSize: 17),),
+            ),
+          ],
         ),
       ),
       floatingActionButton: FloatingActionButton(
