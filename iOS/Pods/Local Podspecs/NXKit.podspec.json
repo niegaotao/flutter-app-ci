@@ -19,6 +19,11 @@
     "ios": "9.0"
   },
   "swift_versions": "5.0",
+  "resource_bundles": {
+    "NXKit": [
+      "NXKit/Assets/*"
+    ]
+  },
   "frameworks": [
     "UIKit",
     "Foundation"
@@ -26,12 +31,7 @@
   "subspecs": [
     {
       "name": "Foundation",
-      "source_files": "NXKit/Classes/Foundation/*",
-      "resource_bundles": {
-        "NXKit": [
-          "NXKit/Assets/*"
-        ]
-      }
+      "source_files": "NXKit/Classes/Foundation/*"
     },
     {
       "name": "Extensions",
